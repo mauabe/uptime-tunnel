@@ -15,10 +15,25 @@ const _data = require('./lib/data');
 
 //TESTING
 //@TODO delete test after testing
-_data.create('test', 'newFile', {'foo': 'bar'}, function(err){
-  console.log('This was the error: ', err);
-});
+//TEST1 
+// _data.create('test', 'newFile', {'foo': 'bar'}, function(err){
+//   console.log('This was the error: ', err);
+// });
 
+// TEST2
+// _data.read('test', 'newFile', function(err, data){
+//   console.log('this was the error: ',err, ' and this was the data: ', data);
+// });
+
+// //TEST3
+// _data.update('test', 'newFile', {'fizz':'poop'}, function(err){
+//   console.log('this was the error: ', err);
+// });
+
+//TEST4 
+_data.delete('test', 'newFile', function(err){
+  console.log('this was the error: ', err);
+});
 
 //Instantiating http server 
 const httpServer = http.createServer(function(req, res){
