@@ -1,6 +1,6 @@
 /*
 *  Uptime Tunnel
-*  Autho, author: Mauricio Feldman-Abe
+*  Author, author: Mauricio Feldman-Abe
 *  January 2019
 */
 
@@ -8,10 +8,12 @@
 const http = require('http');
 const https = require('https');
 const url = require('url');
-const StringDecoder = require('string_decoder').StringDecoder;
-const config = require('./config');
 const fs = require('fs');
+const StringDecoder = require('string_decoder').StringDecoder;
+const config = require('./lib/config');
 const _data = require('./lib/data');
+const helpers = require('./lib/helpers');
+const handlers = require('./lib/handlers');
 
 //TESTING
 //@TODO delete test after testing
@@ -25,15 +27,15 @@ const _data = require('./lib/data');
 //   console.log('this was the error: ',err, ' and this was the data: ', data);
 // });
 
-// //TEST3
+//TEST3
 // _data.update('test', 'newFile', {'fizz':'poop'}, function(err){
 //   console.log('this was the error: ', err);
 // });
 
 //TEST4 
-_data.delete('test', 'newFile', function(err){
-  console.log('this was the error: ', err);
-});
+// _data.delete('test', 'newFile', function(err){
+//   console.log('this was the error: ', err);
+// });
 
 //Instantiating http server 
 const httpServer = http.createServer(function(req, res){
@@ -100,7 +102,7 @@ const unifiedServer = function(req, res){
         'queryStringObject' : queryStringObject,
         'method' : method,
         'headers' : headers,
-        'payload' : buffer
+        'payload' : helpers.parseJsonToObject(buffer)
       };
   
       // Route the request to the hander specified in the router
@@ -126,21 +128,9 @@ const unifiedServer = function(req, res){
 };
 
 
-//Define handlers
-const handlers = {};
-
-//Ping handler
-handlers.ping = function(data, callback){
-  callback(200);
-};
-
-//Define a not-found handler
-handlers.notFound = function(data, callback){
-  callback(404);
-}
-
 // Define a request router
 const router = {
-  'ping' : handlers.ping
+  'ping' : handlers.ping,
+  'users' : handlers.users
 };
 
