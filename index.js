@@ -49,8 +49,8 @@ app.init();
 //   console.log('this was the error: ', err);
 // });
 
-// //TWILIO TESTING  '4158375309'
-// helpers.sendTwilioSms('4158375309', 'Hello?', function(err){
+// //TWILIO TESTING  '4158675309'
+// helpers.sendTwilioSms('4158675309', 'Hello?', function(err){
 //   console.log('This was the Twilio error: ', err);
 // });
 
