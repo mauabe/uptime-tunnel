@@ -1,7 +1,7 @@
 {
   "firstName":"John",
-  "lastName":"DOe",
-  "phone":"3103926588",
-  "password":"hashedPassword123",
+  "lastName":"Doe",
+  "phone":"3103926500",
+  "password":"password123",
   "tosAgreement":true
 }
