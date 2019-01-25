@@ -9,7 +9,6 @@
 const server = require('./lib/server');
 const workers = require('./lib/workers');
 
-
 //Declare the app
 const app = {};
 
@@ -17,15 +16,12 @@ const app = {};
 app.init = function(){
     // Start server
   server.init();
-
   //Start workers
   workers.init();
-
 };
 
 //Execute 
 app.init();
-
 
 //OLD TESTING
 //@TODO delete test after testing
@@ -49,11 +45,11 @@ app.init();
 //   console.log('this was the error: ', err);
 // });
 
-// //TWILIO TESTING  '4158675309'
+// TWILIO TESTING  '4158675309'
+// const helpers = require('./lib/helpers');
 // helpers.sendTwilioSms('4158675309', 'Hello?', function(err){
 //   console.log('This was the Twilio error: ', err);
 // });
-
 
 //Execute the app
 module.exports = app;
