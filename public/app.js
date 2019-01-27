@@ -41,7 +41,7 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
       }
     }
 
-    //for, te hhtp request as JSON
+    //for the hhtp request as JSON
     const xhr = new XMLHttpRequest();
     xhr.open(method, requestUrl, true);
     xhr.setRequestHeader('content-Type', 'application/json');
@@ -80,6 +80,35 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
     xhr.send(payloadString);
 
 }
+
+//bind the logout button
+app.bindLogoutButton = function(){
+  document.getElementById('logoutButton').addEventListener('click', function(e){
+    //stop it from redirecting anywhere
+    e.preventDefault();
+    //log the user out
+    app.logUserOut();
+  });
+};
+
+//log the user out and redirect 
+app.logUserOut = function(){
+  //get current token id
+  const token = typeof(app.config.sessionToken.id) == 'string' ? app.config.sessionToken.id : XXX
+;
+  //send the current token to the tokens endpoint to delete it
+  const queryStringObject = {
+    id: tokenId
+  };
+  app.client.request(undefined, 'api/tokens', 'DELETE', queryStringObject, undefined, function (XXX){
+    //set the app.conig token as false
+    app.setSessionToken(false);
+    //send th user to the logged out page
+    window.location = '/session/deleted';
+  });
+}
+
+
 
 //bind the forms
 app.bindForms = function(){
@@ -137,7 +166,7 @@ app.formResponseProcessor = function(formId, requestPayload, responsePayload){
     console.log('The accountCreate form was successfully submitted');
     //@TODO Do something that account has been created successfully
     //ideally log in the user. code TK
-    const newPayload = {
+    const  newPayload = {
       'phone':requestPayload.phone,
       'password': requestPayload.password
     };

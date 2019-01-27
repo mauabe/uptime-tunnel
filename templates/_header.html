@@ -28,22 +28,22 @@
       <!-- navigation -->
       <ul class='menu'>
         <li>
-          <a class='loggedOut" href=''>Home</a>
+          <a class='loggedOut href='>Home</a>
         </li>
-        <li>
-          <a class='loggedOut" href='/account/create'>Singup</a>
+        <li class='loggedOut'>
+          <a href='/account/create'>Singup</a>
         </li>
-        <li>
-          <a class='loggedOut" href='/sessions/create'>Login</a>
+        <li class='loggedOut'>
+          <a href='/sessions/create'>Login</a>
         </li>
-         <li>
-          <a class='loggedOut" href='/checks/all'>Dashboard</a>
+        <li class='loggedIn'>
+            <a href='/checks/all'>Dashboard</a>
         </li>
-        <li>
-          <a class='loggedOut" href='account/edit'>Account Settings</a>
+        <li class='loggedIn'>
+          <a href='/account/edit'>Account Settings</a>
         </li>
-        <li>
-          <a class='loggedOut" href='#'>Logout</a>
+        <li class='loggedIn'>
+          <a href='#' id='logoutButton'>Logout</a>
         </li>
       </ul> 
       
