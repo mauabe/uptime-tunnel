@@ -189,6 +189,19 @@ app.formResponseProcessor = function(formId, requestPayload, responsePayload){
     app.setSessionToken(responsePayload);
     window.location = '/checks/all';
   }
+
+  //if forms saved successfullyand they have sucess messgaes show them
+  const formsWithSucessMessages = ['accuntEdit1', 'accountEdit2'];
+  if(formsWithSuccessMessages.indexOf(formId) > -1){
+    document.querySelector('#' + formId + ' .formSuccess').style.display = 'block';
+  }
+
+  //if the user just deletded their account, redirect the to the acount-deleted page
+if(formId == 'accountsEdit3'){
+  app.logUserOut(false);
+  window.location = '/account/deleted';
+}
+
 };
 
 

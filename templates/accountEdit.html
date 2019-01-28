@@ -45,3 +45,16 @@
       </div>
     </form>
   </div>
+
+  <hr />
+  <h2>Delete Your Account</h2>
+  <div class='formWrapper'>
+    <form id='accountEdit3' action='/api/users' method='DELETE'>
+      <input type='hidden' name='_method' value='DELETE'/>
+      <div class='formaerros'></div>
+      <div class='hiddenPhoneNumberInput' type='hiddden' name='phone' />
+      <div class='inputWrapper ctaWrapper'>
+        <button type='submit' class='cta red'> Delete Account</button>
+      </div>
+    </form>
+  </div>
