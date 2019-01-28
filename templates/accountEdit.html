@@ -1,0 +1,60 @@
+<h1> Account Settings</h1>
+
+<hr />
+
+<h2> Edit your Uptime Tunnel account details</h2>
+
+<div class='formWrapper'>
+  <form id='accountEdit1' action='/api/users' method='PUT'>
+    <input type='hidden' name='method' value='PUT' />
+    <div class='formError'></div>
+    <div class='formSucess'>Your Changes Have Been Saved</div>
+    <input class='hiddenPhoneNumberInput' type='hidden' name='phone' />
+    <div class='inputWrapper'>
+      <div class='inputLabel'> Phone Number </div>
+      <input class='disabled displayPhoneInput' type ='text' name='displayPhone' disabXXX = 'xxx' />
+    </div>
+    <div class='inputWrapper'>
+      <div class='inputLabel'> First name </div>
+      <input class='firstNameInput' type ='text' name='firstName' placeholder='first name' />
+    </div>
+    <div class='inputWrapper'>
+      <div class='inputLabel'> Last name </div>
+      <input class='lastNameInput' type ='text' name='lastNname' placeholder='last name' />
+    </div>
+    <div class='inputWrapper ctaWrapper'>
+      <button type='submit' class ='cta green'>Save Changes</button>
+    </div>
+  </form>
+</div>
+
+<hr />
+<h2>Change Your Password</h2>
+  <div class ='formWrapper'>
+    <form id='accountEdit2' action='/api/users' method='PUT'>
+      <input type='hidden' name='_method' value='PUT' />
+      <div class='formError'></div>
+      <div class='formSuccess'> Your New Password Has Been Saved </div>
+      <input class='hiddenPhoneNumberInput' type='hidden' name='phone' />
+      <div class='inputWrapper'>
+        <div class='inputLabel'> Choose a New Password</div>
+        <input type='password' name='password' placeholder="please no password123"/>
+      </div>
+      <div class='inputWrapper ctaWrapper'>
+        <button type='submit' class='cta green'> Save Password</button>
+      </div>
+    </form>
+  </div>
+
+  <hr />
+  <h2>Delete Your Account</h2>
+  <div class='formWrapper'>
+    <form id='accountEdit3' action='/api/users' method='DELETE'>
+      <input type='hidden' name='_method' value='DELETE'/>
+      <div class='formaerros'></div>
+      <div class='hiddenPhoneNumberInput' type='hiddden' name='phone' />
+      <div class='inputWrapper ctaWrapper'>
+        <button type='submit' class='cta red'> Delete Account</button>
+      </div>
+    </form>
+  </div>
