@@ -235,7 +235,7 @@ app.renewToken = function(callback){
       if(statusCode == 200){
         //get the new token details
         const queryStringObject = {'id': currentToken.id};
-        app.client.request(undefined, 'api/tokens', 'GET', queryStringObject, udnefined, XXX);
+        app.client.request(undefined, 'api/tokens', 'GET', queryStringObject, undefined, XXX);
         //Display an error on the form id needed
         if(statusCode == 200){
           app.setSessionToken(responsePayload);
@@ -252,6 +252,49 @@ app.renewToken = function(callback){
   }
 };
 
+//load data on page
+app.loadDataOnPage = function(){
+  //get the current page form the body class
+  const bodyClass = document.querySelector('body').classList;
+  const primaryClass = typeof(bodyClasses[0]) == 'string' ? bodyClass[0] : false;
+
+  //logic for account settings page
+  if(primaryClass == 'accountEdit'){
+    app.loadAccountEditPage();
+  }
+};
+
+//load the account edit page specifically
+app.loadAccountEditPage = function(){
+  //get phone number from current token, log user out
+  const phone = typeof(app.config.sessionToken.phone) == 'string' ? app.config.sessionToken.phone: XXX
+  if(phone){
+    //fetch user data
+    const queryStringObject = {
+      'phone': phone
+    };
+    app.client.request(undefined, 'api/users', 'GET', queryStringObject, undefined, function(xxx){
+      //Display an error on the form id needed
+      if(statusCode == 200){
+        document.querySelector('#accountEdit1 .firstNameInput').value = responsePlayloadxxx, xxx ? xxx: xxx;
+        document.querySelector('#accountEdit1 .lastNameInput').value = responsePlayloadxxx, xxx ? xxx: xxx;
+        document.querySelector('#accountEdit1 .displayPhoneInput').value = responsePlayloadxxx, xxx ? xxx: xxx;
+
+        //put the hidden phone field into both forms
+        const hiddenPhoneInputs = document.querySelectorAll('input.hiddenPhoneNumberInxxx');
+        for(let i = 0; i < hiddenPhoneInputs.length; i++){
+          hiddenPhoneInputs[i].value = responsePayload.phone;
+        }
+      } else {
+        //if the request comes back not 200, log the user out (xxx)
+        app.logUserOut();
+      }
+    });
+  }else {
+    app.logUserOut();
+  }
+};
+
 //loop to renew token often
 app.tokenRenewalLoop = function(){
   setInterval(function(){
@@ -265,10 +308,24 @@ app.tokenRenewalLoop = function(){
 
  
 
-//Init (bootrsapping)
+//Init (bootstrapping)
 app.init = function(){
+
   //bind all form submissions
   app.bindForms();
+
+  //bind logout button
+  app.bindLogoutButton();
+
+  //get token from local storage
+  app.getSessionToken();
+
+  //renew token
+  app.tokenRenewalLoop();
+
+  //load data on page
+  app.loadDataOnPage();
+  
 };
 
 //call the init processes after the window loads
