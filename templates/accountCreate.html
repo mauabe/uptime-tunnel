@@ -2,15 +2,15 @@
 <h2> Signup only takes a few moments. Please make sure your phone is capable of receiving text messages. US phone numbers only.</h2>
 
 <div class='formWrapper'>
-  <form id='accountCreate' action='api.users' method='POST'>
+  <form id='accountCreate' action='/api/users' method='POST'>
     <div class='formError'></div>
     <div class='inputWrapper'>
       <div class='inputLabel'>First Name</div>
-      <input type='text' name='firstName' placeholder='First Name' />
+      <input type='text' name='firstName' placeholder='first name' />
     </div>
     <div class='inputWrapper'>
       <div class='inputLabel'>Last Name</div>
-      <input type='text' name='lastName' placeholder='Last Name' />
+      <input type='text' name='lastName' placeholder='last name' />
     </div>
     <div class='inputWrapper'>
       <div class='inputLabel'>Phone Number</div>
@@ -21,12 +21,11 @@
       <input type='password' name='password' placeholder='not password123 please' />
     </div>
     <div class='inputWrapper'>
-      <div class='inputLabel'>Do you agree with term and conditions</div>
+      <div class='inputLabel'>Do you agree with term and conditions?</div>
       <input type='checkbox' name='tosAgreement' value='agree'>
     </div>
     <div class='inputWrapper ctaWrapper'>
       <button type='submit' class='cta blue'> Get Started</button>
     </div>
-
   </form>
 </div>
