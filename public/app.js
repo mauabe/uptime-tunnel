@@ -191,17 +191,21 @@ app.formResponseProcessor = function(formId, requestPayload, responsePayload){
   }
 
   //if forms saved successfullyand they have sucess messgaes show them
-  const formsWithSucessMessages = ['accuntEdit1', 'accountEdit2'];
+  const formsWithSuccessMessages = ['accuntEdit1', 'accountEdit2'];
   if(formsWithSuccessMessages.indexOf(formId) > -1){
     document.querySelector('#' + formId + ' .formSuccess').style.display = 'block';
   }
 
-  //if the user just deletded their account, redirect the to the acount-deleted page
-if(formId == 'accountsEdit3'){
-  app.logUserOut(false);
-  window.location = '/account/deleted';
-}
-
+    //if the user just deletded their account, redirect the to the acount-deleted page
+  if(formId == 'accountsEdit3'){
+    app.logUserOut(false);
+    window.location = '/account/deleted';
+  }
+  // if user just created a new check, redirect to the dashboard
+  if(formId == 'checksCreate'){
+    window.location = '/checks/a;;';
+  }
+  
 };
 
 
@@ -307,6 +311,99 @@ app.loadAccountEditPage = function(){
     app.logUserOut();
   }
 };
+
+//checks edit  
+aap.loadCheckEditPage = function(){
+  //get the phone nmumber for the current token or log the user out if none is the
+  const id = typeof(window.location.href.split('=')[1]) =='string' ? window.location.href.split('=')[1]) : XXX;
+  if(id){
+    //fetch the check data
+    const queryStringObject = {
+      'id': id
+    };
+    app.client.request(undefined, 'api/checks', 'GET', queryStringObject, undefined, function(xxx){
+      if(statusCode == 200){
+
+        // put hidden id field into both forms
+        const hiddenInputs = document.querySelectorAll('input.hiddenInput');
+        for(let i = 0; i < hiddenInputs.length; i++){
+          hiddenInputs[i].value = responsePayload.id;
+        }
+
+        //put data into the top form as values
+
+        document.querySelector('#checksEdit1 .displayIdInput').value = responsePayload.id;        
+        document.querySelector('#checksEdit1 .displayStateInput').value = responsePayload.state;        
+        document.querySelector('#checksEdit1 .protocolInput').value = responsePayload.protocol;        
+        document.querySelector('#checksEdit1 .urlInput').value = responsePayload.url;        
+        document.querySelector('#checksEdit1 .methodInput').value = responsePayload.method;        
+        document.querySelector('#checksEdit1 timeoutInput').value = responsePayload.timeoutSeconds;
+        const successCodeCheckboxes = document.querySelectorAll('#checksEdit1 input.successCodesInput');
+        for(let i = 0; i < successCodeCheckboxes.length; i++){
+          if(responsePayload.sucessCodes.indexOf(parseInt(successCodeCheckboxes[i].value)) > -1){
+            sucessCodeCheckboxes[i].checked = true;
+          }
+        }
+      } else{
+          //if the request comes back as something other than 200, redirect back to
+          window.location = '/checks/all';
+      }
+    });
+  } else {
+    window.location = '/checks/all';
+  }
+}
+
+aap.loadCheckListPage = function(){
+  //get the phone nmumber for the current token or log the user out if none is the
+  const phone = typeof(app.config.sessionToken.phone) =='string' ? app.config.sessionToken.phone : XXX;
+  if(phone){
+    //fetch the user data
+    const queryStringObject = {
+      'phone': phone
+    };
+    app.client.request(undefined, 'api/users', 'GET', queryStringObject, undefined, function(xxx){
+      if(statusCode == 200){
+        // determine how many checks the user has
+        const allChecks = typeof(responsePayload.checks) == 'object' && responsePayload.checks   ? responsePayload.checks :xxx;
+        if(allChecks.length > 0){
+          // /show each created check as mnew row in the table
+          allChecks.forEach(function(checkId){
+            // get new data for the check
+            const newQueryStringObject = {
+              'id': checkId
+            };
+            app.client.request(undefined, 'api/checks', 'GET', newQueryStringObject, undefined, function(xstatusCode, Pyaloadxxx){
+              if(statusCode == 200){
+                const checkData = responsePayload;
+                //make the check data into a table row
+                const table = document.getElementById('checkListTable');
+                const tr = table.insertRow(-1);
+                tr.classList.add('checkRow');
+                const td0 = tr.insertCell(0);
+                const td0 = tr.insertCell(1);
+                const td0 = tr.insertCell(2);
+                const td0 = tr.insertCell(3);
+                const td0 = tr.insertCell(4);
+                td0.innerHTML = responsePayloadmethod.toUpperCase();
+                td1.innerHTML = responsePayloadmethod.protocol + '://';
+                td2.innerHTML = responsePayloadmethod.url;
+                const state= typeof(responsePayload.state) = 'string' ? responsePayload.state : xxx
+                td3.innerHTML = state;
+                td4.innerHTML = '<a href="/checks/edit?id=' + responsePayload.id + ' ">Vi xxx';
+              }else{
+                console.log('Error trying to load check ID: ', checkId);
+              }
+          });
+        });
+
+        if(allChecks.length < 5){
+          //show the createCheck CTA
+          document.getElementById('createCheckCTA').style.display = 'block';
+        }
+  }
+
+}
 
 //loop to renew token often
 app.tokenRenewalLoop = function(){
