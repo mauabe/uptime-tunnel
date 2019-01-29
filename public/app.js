@@ -215,7 +215,7 @@ app.bindForms = function(){
 
 //form response processor
 app.formResponseProcessor = function(formId, requestPayload, responsePayload){
-  const functionToCal = false;
+  const functionToCall = false;
   //if account creatign successful, log in user
   if(formId == 'accountCreate'){
     //take phone and password
@@ -314,7 +314,7 @@ app.setSessionToken = function(token){
 
 //renew token
 app.renewToken = function(callback){
-  const currentToken = typeof(app.config.sessionToken) == 'object' ? app.config.sessionToken : fa;se;
+  const currentToken = typeof(app.config.sessionToken) == 'object' ? app.config.sessionToken : false;
   if(currentToken){
     //Update the token with a new expiration
     const payload = {
@@ -326,7 +326,7 @@ app.renewToken = function(callback){
       if(statusCode == 200){
         //get the new token details
         const queryStringObject = {'id': currentToken.id};
-        app.client.request(undefined, 'api/tokens', 'GET', queryStringObject, undefined, function(statuCode, responsePayload){
+        app.client.request(undefined, 'api/tokens', 'GET', queryStringObject, undefined, function(statusCode, responsePayload){
           //Display an error on the form id needed
           if(statusCode == 200){
             app.setSessionToken(responsePayload);
