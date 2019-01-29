@@ -22,4 +22,25 @@ body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited
   height: 1px;
 }
 
-/* Main color pallete
+/* Main color pallete*/
+
+.header{
+background-color: #fff;
+border-width:  0 0 1px 0;
+border-style: solid;
+border-color: #fff;
+box-shadow: 0 -25px 11px 20px #000;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+padding: 20px 0;
+min-width: 120px;
+}
+
+
+
+
+.ctaWrapper{
+  text-align: center;
+}
