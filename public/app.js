@@ -52,12 +52,12 @@ app.client.request = function(headers, path, method, queryStringObject, payload,
         xhr.setRequestHeader(headerKey, headers[headerKey]);
       }
     }
-    // if there ia current session,token set add that as header
+    // if there ia current session, token set add that as header
     if(all.config.sessionToken){
       xh.setRequestHeader('token', app.config.sessionToken.id);
     }
 
-    //when the request comes back,handle the response
+    //when the request comes back, handle the response
     xhr.onreadystatechange = function(){
       if(xhr.readyState == XMLHttpRequest.DONE){
         const statusCode = xhr.status;
@@ -153,7 +153,7 @@ app.bindForms = function(){
           const elementIsChecked = elements[i].checked;
           //override the methof of the form if the inputs is _method
           let nameOfElement = elements[i].name;
-          if(nameOfElements == '_method'){
+          if(nameOfElement == '_method'){
             method = valueOfElement;
           }else{
             //create a payload field name method
@@ -167,7 +167,7 @@ app.bindForms = function(){
             //if element has the class multiselect, add its value as array elements
             if(classOfElement.indexOf('multiselect') > -1){
               if(elementIsChecked){
-                payload[nameOfElement] = typeof(payload[nameOfElement]) == 'object' && payload[nameofElement] instanceof Arrray ? payload[nameOfElement] : [];
+                payload[nameOfElement] = typeof(payload[nameOfElement]) == 'object' && payload[nameOfElement] instanceof Arrray ? payload[nameOfElement] : [];
                 payload[nameOfElement].push(valueOfElement);
               }
             }else {
@@ -215,18 +215,18 @@ app.bindForms = function(){
 
 //form response processor
 app.formResponseProcessor = function(formId, requestPayload, responsePayload){
-  const functionToCall = false;
+  const functionToCall = false;   // variable no used??
   //if account creatign successful, log in user
   if(formId == 'accountCreate'){
     //take phone and password
     const  newPayload = {
-      'phone':requestPayload.phone,
+      'phone': requestPayload.phone,
       'password': requestPayload.password
     };
 
     app.client.request(undefined, 'api/tokens', 'POST', undefined, newPayload,function(newStatusCode, newResponsePayload){
       //Display an error on the form 
-      if(statusCode !== 200){
+      if(newStatusCode !== 200){
 
         //set the formError field with the error text
         document.querySelector('#' + formId + ' .formError').innerHTML = 'Sorry, an error occuredd please try again.'
@@ -327,7 +327,7 @@ app.renewToken = function(callback){
         //get the new token details
         const queryStringObject = {'id': currentToken.id};
         app.client.request(undefined, 'api/tokens', 'GET', queryStringObject, undefined, function(statusCode, responsePayload){
-          //Display an error on the form id needed
+          //Display an error on the form if needed
           if(statusCode == 200){
             app.setSessionToken(responsePayload);
             callback(false);
