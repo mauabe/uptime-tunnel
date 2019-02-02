@@ -1,0 +1,34 @@
+/*
+ * CSS Styles for Application
+ *
+ */
+
+
+/* Main color palette */
+/* Form Styling for Account Creation page and others */
+
+
+
+
+.content{}
+/* .disabled.displayIdInput{}
+.disabled.displayPhoneInput{}
+.disabled.displayStateInput{} */
+.displayPhone{}
+.firstName{}
+.firstNameInput{}
+.hiddenIdIput{}
+.hiddenPhoneNumeberInput{}
+.httpmethod{}
+.intval{}
+.lastNameInput{}
+.loggedIn{}
+.loggedOut{}
+
+.menu{}
+.methodInput{}
+.multiSelect.intval{}
+.protocolInput{}
+.successCodesInput.multiseled .intval{}
+.timeoutInput.intval{}
+.UrlInput{}
