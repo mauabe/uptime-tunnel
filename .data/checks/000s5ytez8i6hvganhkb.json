@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"id":"000s5ytez8i6hvganhkb","userPhone":"3103926500","protocol":"http","url":"spepy.com","method":"get","successCodes":[200,201,301,302],"timeoutSeconds":3,"state":"up","lastChecked":1549085802851}
+=======
+{"id":"000s5ytez8i6hvganhkb","userPhone":"3103926500","protocol":"http","url":"spepy.com","method":"get","successCodes":[200,201,301,302],"timeoutSeconds":3,"state":"up","lastChecked":1549168206953}
+>>>>>>> f710d4a7d74f81b854200b1fa6d76ca898b8bcf1
