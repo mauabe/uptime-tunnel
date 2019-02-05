@@ -8,7 +8,7 @@ body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited
   line-height: 100%;
   padding: 0;
   margin: 0;
-  font-family: 'Imprima', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: normal;
   text-decoration: none;
@@ -27,13 +27,15 @@ body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited
 font-family: 'Imprima', sans-serif;
 font-family: 'Slackey', cursive;
 font-family: 'Roboto Slab', serif;
+font-family: 'Roboto', sans-serif;
+
 }
 
 
 /* Main pallete*/
 
 .header{
-  background-color: #fff;
+  background-color: rgb(219, 227, 236);
   border-width:  0 0 1px 0;
   border-style: solid;
   border-color: #fff;
@@ -80,8 +82,9 @@ font-family: 'Roboto Slab', serif;
 
 .content{
   margin-top: 150px;
-  width: 1000px;
-  margin: 150px auto;
+  width: 1200px;
+  margin: 200px auto;
+  background-color: rgba(190, 192, 197, 0.164)
 }
 
 .footer{
@@ -226,7 +229,7 @@ a.cta:hover, button.cta:hover{
   display: none;
   background-color: #217844;
   font-style: italic;
-  color: #fff;
+  color: #d87070;
   padding: 10px 15px;
   border-radius: 5px;
   margin: 0 0 15px 0;

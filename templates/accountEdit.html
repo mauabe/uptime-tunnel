@@ -12,7 +12,7 @@
     <input class='hiddenPhoneNumberInput' type='hidden' name='phone' />
     <div class='inputWrapper'>
       <div class='inputLabel'> Phone Number </div>
-      <input class='disabled displayPhoneInput' type ='text' name='displayPhone' disabXXX = 'xxx' />
+      <input class='disabled displayPhoneInput' type ='text' name='displayPhone' disabled />
     </div>
     <div class='inputWrapper'>
       <div class='inputLabel'> First Name </div>
@@ -22,6 +22,11 @@
       <div class='inputLabel'> Last Name </div>
       <input class='lastNameInput' type ='text' name='lastNname' placeholder='last name' />
     </div>
+    <div class='inputWrapper'>
+      <div class='inputLabel'> Password </div>
+      <input type ='password' name='password' placeholder=' * * * * * * * * * ' />
+    </div>
+
     <div class='inputWrapper ctaWrapper'>
       <button type='submit' class ='cta green'>Save Changes</button>
     </div>
@@ -38,7 +43,7 @@
       <input class='hiddenPhoneNumberInput' type='hidden' name='phone' />
       <div class='inputWrapper'>
         <div class='inputLabel'> Choose a New Password</div>
-        <input type='password' name='password' placeholder="please no password123"/>
+        <input type='password' name='password' placeholder="password123? no way!"/>
       </div>
       <div class='inputWrapper ctaWrapper'>
         <button type='submit' class='cta green'> Save Password</button>
@@ -49,14 +54,14 @@
 
   <hr />
   <h2>Delete Your Account</h2>
-  <div class='formWrapper'>
-    <form id='accountEdit3' action='/api/users' method='DELETE'>
-      <input type='hidden' name='_method' value='DELETE'/>
-      <div class='formError'></div>
-      <div class='warning'>Warning: This action cannot be undone. Think before you click!</div>
-      <div class='hiddenPhoneNumberInput' type='hiddden' name='phone' />
-      <div class='inputWrapper ctaWrapper'>
-        <button type='submit' class='cta red'> Delete Account</button>
+  <div class="formWrapper">
+    <form id="accountEdit3" action="/api/users" method="DELETE">
+      <input type="hidden" name="_method" value="DELETE"/>
+      <div class="formError"></div>
+      <div class="warning">Warning: This action cannot be undone. Think twice before clicking!</div>
+      <input class="hiddenPhoneNumberInput" type="hidden" name="phone" />
+      <div class="inputWrapper ctaWrapper">
+        <button type="submit" class="cta red">Delete Account</button>
       </div>
     </form>
   </div>
