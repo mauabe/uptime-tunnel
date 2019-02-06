@@ -3,39 +3,14 @@
 *   Test runner
 */
 
-// Dependencies
-var helpers = require('./../lib/helpers');
-var assert = require('assert');
-
 //application logic for test runner
 _app = {};
 
 //container for the tests
-_app.tests = {
-  'unit' : {}
-};
+_app.tests = {};
 
- //assert that the number function is returning a number
-_app.tests.unit['helpers.getANumber should return 1'] = function(done){
-  var val = helpers.getANumber();
-  assert.equal(val, 1);
-  done();
-};
-
-
- //assert that the number function is returning 1
- _app.tests.unit['helpers.getANumber should return 1'] = function(done){
-  var val = helpers.getANumber();
-  assert.equal(typeof(val), 'number');
-  done(); 
-};
-
- //assert that the number function is returning a 2
- _app.tests.unit['helpers.getANumber should return 1'] = function(done){
-  var val = helpers.getANumber();
-  assert.equal(val, 2);
-  done();
-};
+//add on the unite tests
+_app.tests.unit = require('./unit');
 
 //count all tests
 _app.countTests = function(){
@@ -97,8 +72,8 @@ _app.runTests = function(){
   }
 };
 
-//priduce a test outcome report
-_app.produceTestReport = function(limit, successes, errors){
+// Product a test outcome report
+_app.produceTestReport = function(limit,successes,errors){
   console.log("");
   console.log("--------BEGIN TEST REPORT--------");
   console.log("");
@@ -119,13 +94,10 @@ _app.produceTestReport = function(limit, successes, errors){
     console.log("");
     console.log("--------END ERROR DETAILS--------");
   }
-
-
   console.log("");
   console.log("--------END TEST REPORT--------");
 
 };
 
-
-//run the test
+// Run the tests
 _app.runTests();
