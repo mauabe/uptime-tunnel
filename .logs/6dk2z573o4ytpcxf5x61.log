@@ -1,0 +1,1 @@
+{"check":{"id":"6dk2z573o4ytpcxf5x61","userPhone":"3103334400","protocol":"http","url":"amazon.com","method":"get","successCodes":[200,201],"timeoutSeconds":4,"state":"down","lastChecked":1549513947957},"outcome":{"error":false,"responseCode":301},"state":"down","alert":false,"time":1549514029044}

@@ -1,0 +1,1 @@
+{"check":{"id":"2ql2nkc91wooi4ubzk7s","userPhone":"3103335500","protocol":"https","url":"spepy.com","method":"get","successCodes":[200],"timeoutSeconds":1,"state":"down","lastChecked":1549513948043},"outcome":{"error":{"error":true,"value":{"code":"DEPTH_ZERO_SELF_SIGNED_CERT"}},"responseCode":false},"state":"down","alert":false,"time":1549514029181}
