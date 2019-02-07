@@ -1,0 +1,1 @@
+{"check":{"id":"geemiyi2tkl76mtu6d38","userPhone":"3103335500","protocol":"http","url":"globo.com","method":"put","successCodes":[200,201],"timeoutSeconds":1,"state":"down","lastChecked":1549513948165},"outcome":{"error":false,"responseCode":301},"state":"down","alert":false,"time":1549514029248}

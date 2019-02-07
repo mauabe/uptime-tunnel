@@ -271,7 +271,7 @@ app.formResponseProcessor = function(formId,requestPayload,responsePayload){
 
 };
 
-// Get the session token from localstorage and set it in the app.config object
+// Get the session token from local storage and set it in the app.config object
 app.getSessionToken = function(){
   var tokenString = localStorage.getItem('token');
   if(typeof(tokenString) == 'string'){

@@ -3,7 +3,6 @@
 *   Unit test
 */
 
-
 // Dependencies
 var helpers = require('./../lib/helpers.js');
 var logs = require('./../lib/logs.js');
@@ -13,8 +12,9 @@ var assert = require('assert');
 // Holder for Tests
 var unit = {};
 
- //assert that the getANumber function is returning a number
-unit['helpers.getANumber should return a number'] = function(done){
+
+ // assert that the getANumber function is returning a number
+ unit['helpers.getANumber should return a number'] = function(done){
   var val = helpers.getANumber();
   assert.equal(typeof(val), 'number');
   done();
@@ -27,14 +27,14 @@ unit['helpers.getANumber should return 1'] = function(done){
   done();
 };
 
-// Assert that the getANumber function is returning 2
+// Assert that the getANumber function is returning 2   //LOGS AN ERROR
 unit['helpers.getNumberOne should return 2'] = function(done){
   var val = helpers.getANumber();
   assert.equal(val, 2);
   done();
 };
 
-// Logs.list should callback an array and a false error
+// /* Logs.list should callback an array and a false error   // TROUBLE WITH LOGS
 unit['logs.list should callback a false error and an array of log names'] = function(done){
   logs.list(true,function(err,logFileNames){
       assert.equal(err, false);
@@ -42,7 +42,7 @@ unit['logs.list should callback a false error and an array of log names'] = func
       assert.ok(logFileNames.length > 1);
       done();
   });
-};
+}; // */
 
 //logs =.truncate should not throw if it doesn't exist
 unit['logs.truncate should not throw if the logId does not exist, should callback an error instead'] = function(done){
@@ -54,13 +54,14 @@ unit['logs.truncate should not throw if the logId does not exist, should callbac
   },TypeError);
 };
 
-// exampleDebuggingProblem.init should not throw (but it does)
+// exampleDebuggingProblem.init should not throw (but it does)  // LOGS AN ERROR
 unit['exampleDebuggingProblem.init should not throw when called'] = function(done){
   assert.doesNotThrow(function(){
     exampleDebuggingProblem.init();
     done();
-  },TypeError);
-};
+  }, TypeError);
+};  
+// 
 
 // Export the tests to the runner
 module.exports = unit;

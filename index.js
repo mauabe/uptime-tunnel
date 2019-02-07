@@ -16,21 +16,25 @@ const cli = require('./lib/cli');
 const app = {};
 
 //Initialize server
-app.init = function(){
-    // Start server
+app.init = function(callback){
+  
+  // Start server
   server.init();
+
   //Start workers
   workers.init();
 
   //start the CLI but make sure it starts last
   setTimeout(function(){
     cli.init();
+    callback();
   }, 50);
 };
 
-//Execute 
-app.init();
-
+//Self invoking only if required directly
+if(require.main === module){
+  app.init(function(){});
+}
 //OLD TESTING
 //@TODO delete test after testing
 //TEST1 

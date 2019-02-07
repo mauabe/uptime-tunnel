@@ -3,14 +3,18 @@
 *   Test runner
 */
 
+//override the NODE_ENV variable
+process.env.NODE_ENV = 'testing';
+
 //application logic for test runner
 _app = {};
 
 //container for the tests
 _app.tests = {};
 
-//add on the unite tests
+//add on the unit tests
 _app.tests.unit = require('./unit');
+_app.tests.api = require('./api');
 
 //count all tests
 _app.countTests = function(){
@@ -45,6 +49,7 @@ _app.runTests = function(){
               // Call the test
               try{
                 testValue(function(){
+
                   // If it calls back without throwing, then it succeeded, so log it in green
                   console.log('\x1b[32m%s\x1b[0m',tmpTestName);
                   counter++;
@@ -96,6 +101,7 @@ _app.produceTestReport = function(limit,successes,errors){
   }
   console.log("");
   console.log("--------END TEST REPORT--------");
+  process.exit(0);
 
 };
 
