@@ -3,7 +3,7 @@
 *   HTTP2 client 
 */
 
- // Dependenc ies
+ // Dependencies
  var http2 = require('http2');
 
 
