@@ -4,19 +4,16 @@
 */
 
 // Dependencies
-var app = require('./../index');
-var assert = require('assert');
-var http = require('http');
-var config = require('./../lib/config');
+const app = require('./../index');
+const assert = require('assert');
+const http = require('http');
+const config = require('./../lib/config');
 
-// Holder for Tests
-var api = {};
+const api = {};
 
-// Helpers
-var helpers = {};
+const helpers = {};
 helpers.makeGetRequest = function(path,callback){
-  // Configure the request details
-  var requestDetails = {
+  const requestDetails = {
     'protocol' : 'http:',
     'hostname' : 'localhost',
     'port' : config.httpPort,
@@ -27,14 +24,13 @@ helpers.makeGetRequest = function(path,callback){
     }
   };
 
-  // Send the request
-  var req = http.request(requestDetails,function(res){
+  const req = http.request(requestDetails,function(res){
       callback(res);
   });
   req.end();
 };
 
-// The main init() function should be able to run without throwing.
+// stop main init() function from throwing.
 api['app.init should start without throwing'] = function(done){
   assert.doesNotThrow(function(){
     app.init(function(err){
@@ -43,7 +39,7 @@ api['app.init should start without throwing'] = function(done){
   },TypeError);
 };
 
-// Make a request to /ping
+// request to /ping
 api['/ping should respond to GET with 200'] = function(done){
   helpers.makeGetRequest('/ping',function(res){
     assert.equal(res.statusCode,200);
@@ -61,7 +57,7 @@ api['/api/users should respond to GET with 400'] = function(done){
 
 // Make a request to a random path
 api['A random path should respond to GET with 404'] = function(done){
-  helpers.makeGetRequest('/this/path/shouldnt/exist',function(res){
+  helpers.makeGetRequest('/this/path/shouldnt/exist', function(res){
     assert.equal(res.statusCode,404);
     done();
   });
