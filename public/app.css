@@ -82,7 +82,7 @@ font-family: 'Roboto', sans-serif;
 
 .content{
   margin-top: 155px;
-  width: 1200px;
+  width: 1100px;
   margin: 200px auto;
   background-color: rgba(237, 242, 250, 0.93);
   border-radius: 10px;
@@ -130,7 +130,7 @@ hr{
 body {
   background-image: url("lego-1500.png");
   background-attachment: fixed;
-  background-position: 5% 20%; 
+  background-position: 15% 20%; 
   background-repeat: no-repeat;
 }
 
@@ -212,7 +212,7 @@ a.cta:hover, button.cta:hover{
   background-color: #1a1a1a;
   color: #fff;
   border-radius: 5px;
-  text-transform: upplowercase;
+  text-transform: uppercase;
   font-weight: normal;
   text-align: center;
   display: inline-block;
@@ -270,11 +270,20 @@ input .disabled{
 
 .inputLabel{
   padding: 0 0 5px 0;
-  color: #808080;
+  color: #8c8c8c;
 }
 
 .inputWrapper{
   padding: 0 0 20px 0;
+}
+
+.agreeline{
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  align-items: left;
+  padding: 0 0 5px 0;
+  clear: both;
+  color: #8c8c8c;
 }
 
 table{
@@ -333,6 +342,9 @@ td a, td a:hover, td a:active{
   margin-bottom: 25px;
 }
 
+#agreeline{
+  display: inline-block;
+}
 
 /* 
 .content{} */
