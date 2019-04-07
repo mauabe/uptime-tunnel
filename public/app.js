@@ -4,14 +4,12 @@
 */
 
 const app = {};
-//console.log('Hello console.world');
-
 
 app.config = {
     'sessionToken': false
 };
 
-//AJAX client for the RESTful API
+//AJAX client 
 app.client = {};
 
 //interface for making API calls
@@ -26,27 +24,26 @@ payload = typeof(payload) == 'object' && payload !== null ? payload : {};
 callback = typeof(callback) == 'function' ? callback : false;
 
 // For each query string parameter sent, add it to the path
-var requestUrl = path+'?';
-var counter = 0;
-for(var queryKey in queryStringObject){
+let requestUrl = path+'?';
+let counter = 0;
+for(let queryKey in queryStringObject){
    if(queryStringObject.hasOwnProperty(queryKey)){
      counter++;
      // If at least one query string parameter has already been added, preprend new ones with an ampersand
      if(counter > 1){
-       requestUrl+='&';
+       requestUrl += '&';
      }
-     // Add the key and value
-     requestUrl+=queryKey+'='+queryStringObject[queryKey];
+     requestUrl += queryKey + '=' + queryStringObject[queryKey];
    }
 }
 
 // Form the http request as a JSON type
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 xhr.open(method, requestUrl, true);
 xhr.setRequestHeader("Content-type", "application/json");
 
 // For each header sent, add it to the request
-for(var headerKey in headers){
+for(let headerKey in headers){
    if(headers.hasOwnProperty(headerKey)){
      xhr.setRequestHeader(headerKey, headers[headerKey]);
    }
@@ -60,10 +57,8 @@ if(app.config.sessionToken){
 // When the request comes back, handle the response
 xhr.onreadystatechange = function() {
     if(xhr.readyState == XMLHttpRequest.DONE) {
-      var statusCode = xhr.status;
-      var responseReturned = xhr.responseText;
-
-      // Callback if requested
+      let statusCode = xhr.status;
+      let responseReturned = xhr.responseText;
       if(callback){
         try{
           var parsedResponse = JSON.parse(responseReturned);
@@ -71,28 +66,22 @@ xhr.onreadystatechange = function() {
         } catch(e){
           callback(statusCode,false);
         }
-
       }
     }
 }
 
 // Send the payload as JSON
-var payloadString = JSON.stringify(payload);
+let payloadString = JSON.stringify(payload);
 xhr.send(payloadString);
 
 };
 
 // Bind the logout button
 app.bindLogoutButton = function(){
-document.getElementById("logoutButton").addEventListener("click", function(e){
-
-  // Stop it from redirecting anywhere
-  e.preventDefault();
-
-  // Log the user out
-  app.logUserOut();
-
-});
+  document.getElementById("logoutButton").addEventListener("click", function(e){
+    e.preventDefault();
+    app.logUserOut();
+  });
 };
 
 //log the user out and redirect 
@@ -104,11 +93,10 @@ app.logUserOut = function(redirectUser){
   var tokenId = typeof(app.config.sessionToken.id) == 'string' ? app.config.sessionToken.id : false;
 
   // Send the current token to the tokens endpoint to delete it
-  var queryStringObject = {
+  const queryStringObject = {
     'id' : tokenId
   };
   app.client.request(undefined,'api/tokens','DELETE',queryStringObject,undefined,function(statusCode,responsePayload){
-    // Set the app.config token as false
     app.setSessionToken(false);
 
     // Send the user to the logged out page

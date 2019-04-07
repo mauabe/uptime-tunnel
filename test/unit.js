@@ -15,7 +15,7 @@ const unit = {};
 
  // assert that the getANumber function is returning a number
  unit['helpers.getANumber should return a number'] = function(done){
-  lst val = helpers.getANumber();
+  let val = helpers.getANumber();
   assert.equal(typeof(val), 'number');
   done();
 };
